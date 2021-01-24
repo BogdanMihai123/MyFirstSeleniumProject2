@@ -18,7 +18,7 @@ public class Main {
         driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
         driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a")).click();
         driver.findElement(By.cssSelector("#email")).sendKeys("cosmin@fasttrackit.org");
-        driver.findElement(By.cssSelector("#pass")).sendKeys("123456");
+        driver.findElement(By.cssSelector("#pass")).sendKeys("");
         driver.findElement(By.cssSelector("#send2 > span > span")).click();
 
         driver.close();
