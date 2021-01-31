@@ -23,10 +23,10 @@ public class WishList {
     @Test
     public void wishlistwithoutaccount(){
 
-        driver.findElement(By.cssSelector("#nav > ol > li.level0.nav-5.parent > a")).click();
-        driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col3-layout > div > div.col-wrapper > div.col-main > div.category-products > ul > li > div > div.actions > ul > li:nth-child(1) > a")).click();
-        WebElement message= driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.account-login > div > h1"));
-        Assert.assertEquals("LOGIN OR CREATE AN ACCOUNT!",message.getText());
+        driver.findElement(By.cssSelector("li[class*='nav-5 parent']")).click();
+        driver.findElement(By.cssSelector("a[class*='wish']")).click();
+        WebElement message= driver.findElement(By.cssSelector("h1"));
+        Assert.assertEquals("LOGIN OR CREATE AN ACCOUNT",message.getText());
     }
 
     @After

@@ -24,10 +24,10 @@ public class MyAccount {
     @Test
     public void Myaccountwithoutlogin(){
 
-        driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li.first > a")).click();
-        WebElement message=driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.account-login > div > h1"));
-        Assert.assertEquals("Nu ai cont",message.getText());
+        driver.findElement(By.cssSelector("a[data-target-element*='account']")).click();
+        driver.findElement(By.cssSelector("div[id*='header'] a[title*='My A']")).click();
+        WebElement message=driver.findElement(By.cssSelector("h1"));
+        Assert.assertEquals("NO ACCOUNT",message.getText());
     }
 
     @After

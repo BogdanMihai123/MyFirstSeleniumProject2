@@ -24,12 +24,12 @@ public class Login {
     public void login(){
 
 
-        driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a")).click();
+        driver.findElement(By.cssSelector("a[data-target-element*='account']")).click();
+        driver.findElement(By.cssSelector("a[title*='Log In']")).click();
         driver.findElement(By.cssSelector("#email")).sendKeys("cosmin@fasttrackit.org");
         driver.findElement(By.cssSelector("#pass")).sendKeys("123456");
-        driver.findElement(By.cssSelector("#send2 > span > span")).click();
-        WebElement helloMessage = driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col2-left-layout > div > div.col-main > div.my-account > div > div.welcome-msg > p.hello > strong"));
+        driver.findElement(By.cssSelector("button[id*='send2']")).click();
+        WebElement helloMessage = driver.findElement(By.cssSelector("p[class*='hello']"));
         Assert.assertTrue(helloMessage.isDisplayed());
         //String message=helloMessage.getText();
 
@@ -40,14 +40,31 @@ public class Login {
     public void invalidemaillogin(){
 
 
-        driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a")).click();
+        driver.findElement(By.cssSelector("a[data-target-element*='account']")).click();
+        driver.findElement(By.cssSelector("a[title*='Log In']")).click();
         driver.findElement(By.cssSelector("#email")).sendKeys("cosmin123@fasttrackit.org");
         driver.findElement(By.cssSelector("#pass")).sendKeys("123456");
-        driver.findElement(By.cssSelector("#send2 > span > span")).click();
-        WebElement errorMessage = driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.account-login > ul > li > ul > li > span"));
+        driver.findElement(By.cssSelector("button[id*='send2']")).click();
+        WebElement errorMessage = driver.findElement(By.cssSelector("li[class*='error']"));
         Assert.assertEquals("Invalid login or password...",errorMessage.getText());
     }
+
+    @Test
+    public void loginlogout(){
+
+        driver.findElement(By.cssSelector("a[data-target-element*='account']")).click();
+        driver.findElement(By.cssSelector("a[title*='Log In']")).click();
+        driver.findElement(By.cssSelector("#email")).sendKeys("cosmin@fasttrackit.org");
+        driver.findElement(By.cssSelector("#pass")).sendKeys("123456");
+        driver.findElement(By.cssSelector("button[id*='send2']")).click();
+        driver.findElement(By.cssSelector("a[data-target-element*='account']")).click();
+        driver.findElement(By.cssSelector("a[title*='Out']"));
+        WebElement finalmessage = driver.findElement(By.cssSelector("h1"));//nu stiu de ce aici da MY DASHBOARD?
+        //Assert.assertTrue(finalmessage.isDisplayed());
+        Assert.assertEquals("LOGIN OR CREATE AN ACCOUNT",finalmessage.getText());
+    }
+
+
     @After
     public void close(){
         driver.close();
