@@ -26,4 +26,6 @@ public class Droplist {
         act.moveToElement(driver.findElement(By.cssSelector("#nav > ol > li.level0.nav-2.parent > a"))).perform();
         driver.findElement(By.xpath("//*[@id=\"nav\"]/ol/li[2]/ul/li[4]/a")).click();
     }
+
+
 }

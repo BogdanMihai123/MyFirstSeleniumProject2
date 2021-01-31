@@ -31,6 +31,7 @@ public class Cart {
         driver.findElement(By.cssSelector("#product_addtocart_form > div.product-shop > div.product-options-bottom > div.add-to-cart > div.add-to-cart-buttons > button")).click();
         WebElement message=driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.cart.display-single-price > ul > li > ul > li > span"));
         Assert.assertEquals("Lexington Cardigan Sweater was added to your shopping cart",message.getText());
+        //driver.findElement(By.cssSelector("li[class*='bottom'] button[title*='Proceed']")).click(); testat cu selector scris la tema 2
     }
 
     @Test
@@ -48,10 +49,10 @@ public class Cart {
         Assert.assertFalse(message.isDisplayed());
     }
 
-    @After
-    public void close(){
-
-        driver.quit();
-    }
+//    @After
+//    public void close(){
+//
+//        driver.quit();
+//    }
 
 }

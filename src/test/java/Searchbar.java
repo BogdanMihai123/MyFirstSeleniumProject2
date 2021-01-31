@@ -35,7 +35,7 @@ public class Searchbar {
 
         driver.findElement(By.cssSelector("#search")).click();
         driver.findElement(By.cssSelector("#search")).sendKeys("apple");
-        driver.findElement(By.cssSelector("#search_mini_form > div.input-box > button")).click();
+        driver.findElement(By.cssSelector("button[title='Search']")).click(); //am testat cu selectorul creat la tema 2
         WebElement message= driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col3-layout > div > div.col-wrapper > div.col-main > p"));
         Assert.assertEquals("Your search returns no results.", message.getText());
     }
